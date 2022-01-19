@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Payment Gateway</h1>
+    <p>Choose your Card Type : <select name="card" id="card">
+        <option value="">-Select Card-</option>
+        <option value="visa">VISA</option>
+        <option value="rupay">Rupay</option>
+        <option value="mastercard">Mastercard</option>
+        <option value="maestro">Maestro</option>
+    </select>
+</p>
+<p>Card Number : <input type="number" name="cardnumber" id="cardnumber" min="16" max="16"></p>
+<p>Expiry Date : <input type="date" placeholder="dd-mm-yyyy" name="exp" id="exp"> CVV : <input type="password" name="cvv" id="cvv"></p>
+<p>Card Holder Name : <input type="text" name="cardhname" id="cardhname"></p>
+<p><input type="checkbox" name="savecard" id="savecard"> Save this card for fast payments</p>
+<input type="submit" value="Pay">
+</body>
+</html>
