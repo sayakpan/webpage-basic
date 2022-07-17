@@ -1,0 +1,119 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+}
+
+body {
+  margin: 0px;
+}
+header {
+  padding: 10px;
+  background-color: rgb(13, 165, 165);
+}
+header h1 {
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+nav {
+  background-color: rgb(37, 35, 35);
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
+  overflow: hidden;
+}
+nav a {
+  color: white;
+  float: left;
+  text-align: center;
+  padding: 25px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+p#home {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px;
+  text-align: justify;
+  font-family: "Times New Roman";
+}
+
+ul,
+li {
+  margin: 20px;
+  text-align: justify;
+  font-family: "Times New Roman";
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.description {
+  text-align: center;
+}
+
+footer {
+  margin: 10px;
+}
+
+.enq {
+  text-align: left;
+  padding: 15px 30px 15px 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 15px 30px;
+}
+
+div {
+  padding: 15px 30px 15px 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 15px 30px;
+}
+.container {
+  background-color: rgb(221, 221, 221);
+  border: 1px solid rgb(175, 175, 175);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="date"],
+select,
+textarea{
+  margin: 7px 0px 7px 0px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px
+}
+#main_head{
+  text-align: center;
+}
+input[type="submit"]{
+  width: 100%;
+  padding: 12px;
+  background-color: rgb(53, 163, 53);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input[type="submit"]:hover{
+  background-color: rgb(17, 117, 17);
+}

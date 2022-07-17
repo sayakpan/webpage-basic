@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container mt-5 col-6">
+      <div class="input-group mb-3">
+        <input
+          id="input"
+          type="text"
+          class="form-control"
+          placeholder="Add items to Cart"
+          aria-label="Add items to Cart"
+          aria-describedby="button-addon2"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-success" type="button" id="button-addon2">
+            + Add
+          </button>
+        </div>
+      </div>
+      <ul class="list-group d-flex" id="itemList">
+        <li class="list-group-item d-flex">
+          <h4 class="flex-grow-1">First Item</h4>
+          <button
+            id="edit"
+            onclick="editbutton(this)"
+            class="btn btn-warning mr-2"
+          >
+            Edit
+          </button>
+          <button
+            id="delete"
+            onclick="deletebutton(this)"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      let addbtn = document.getElementById("button-addon2");
+      let input = document.getElementById("input");
+
+      addbtn.addEventListener("click", addItem);
+      input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          addItem();
+        }
+      });
+
+      let itemList = document.getElementById("itemList");
+
+      //Add New Item
+      function addItem(e) {
+        if (
+          itemList.children[0].classList == "emptyMsg text-muted text-center"
+        ) {
+          itemList.children[0].remove();
+        }
+
+        let itemName = input.value;
+
+        if (itemName == "") {
+          alert("No Item Entered");
+        } else {
+          let newLi = document.createElement("li");
+
+          newLi.className = "list-group-item d-flex";
+          newLi.innerHTML = `<h4 class="flex-grow-1">${itemName}</h4>
+          <button id="edit" onclick="editbutton(this)" class="btn btn-warning mr-2">Edit</button>
+          <button id="delete" onclick="deletebutton(this)" class="btn btn-danger">Delete</button>`;
+          itemList.appendChild(newLi);
+        }
+      }
+
+      // Remove Item
+      function deletebutton(clickedElement) {
+        clickedElement.parentElement.remove();
+        if (itemList.children.length <= 0) {
+          let emptyMsg = document.createElement("h6");
+          emptyMsg.className = "emptyMsg text-muted text-center";
+          //emptyMsg.classList = "h6 text-muted text-center ";
+          emptyMsg.textContent = "List is Empty";
+          itemList.appendChild(emptyMsg);
+        }
+      }
+
+      //Remove Item Another Method
+      // let removebtn = document.getElementById("delete");
+      // removebtn.addEventListener("click", remove);
+      // function remove(e) {
+      //   removebtn.parentElement.remove();
+      //   if (itemList.children.length <= 0) {
+      //     let emptyMsg = document.createElement("h6");
+      //     emptyMsg.className = "emptyMsg text-muted text-center";
+      //     //emptyMsg.classList = "h6 text-muted text-center ";
+      //     emptyMsg.textContent = "List is Empty";
+      //     itemList.appendChild(emptyMsg);
+      //   }
+      // }
+
+      function editbutton(currElement) {
+        if (currElement.textContent == "Edit") {
+          currElement.textContent = "Done";
+          currElement.className = "btn btn-success mr-2";
+          let itemText = currElement.previousElementSibling.textContent;
+          let editInput = document.createElement("input");
+          editInput.type = "text";
+          editInput.className = "form-control mr-5";
+          editInput.placeholder = "Item Name";
+          editInput.value = itemText;
+          currElement.parentElement.replaceChild(
+            editInput,
+            currElement.previousElementSibling
+          );
+        } else {
+          currElement.textContent = "Edit";
+          currElement.className = "btn btn-warning mr-2";
+          let itemText = currElement.previousElementSibling.value;
+          let editHeader = document.createElement("h4");
+          editHeader.className = "flex-grow-1";
+          editHeader.textContent = itemText;
+          currElement.parentElement.replaceChild(
+            editHeader,
+            currElement.previousElementSibling
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
